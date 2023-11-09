@@ -15,7 +15,10 @@ if int(pip.__version__.split(".")[0]) >= 6:
 else:
     install_reqs = parse_requirements('requirements.txt')
 
-install_requires = [str(ir.req) for ir in install_reqs]
+try:
+    install_requires = [str(ir.req) for ir in install_reqs]
+except:
+    install_requires = [str(ir.requirement) for ir in install_reqs]
 
 setuptools.setup(
     name='pengu-ddt',
