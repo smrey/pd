@@ -6,8 +6,9 @@ from penGU.isolate.db_record import update_isolate_database
 
 from penGU.sequencing.db_record import update_sequencing_database
 
-from penGU.mlst.update_refdb import generate_mlst_refdb
-from penGU.mlst.db_record import update_mlst_database
+#from penGU.mlst.update_refdb import generate_mlst_refdb
+#from penGU.mlst.db_record import update_mlst_database
+from penGU.mlst.db_record import download_mlst_refdb
 
 from penGU.distance.update_refdb import update_distance_refdb
 from penGU.distance.db_record import update_distance_database
@@ -50,8 +51,9 @@ def run_commmand(config_dict, args):
         update_sequencing_database(config_dict, sequencing_meta_dict)
 
     elif 'update_mlst_db' in args.command:
-        generate_mlst_refdb(config_dict, args.mlst_scheme_name, args.pubmlst_url)
-        update_mlst_database(config_dict, args.mlst_csv)
+        download_mlst_refdb(config_dict, args.mlst_scheme_name, args.pubmlst_url)
+        #generate_mlst_refdb(config_dict, args.mlst_scheme_name, args.pubmlst_url)
+        #update_mlst_database(config_dict, args.mlst_csv)
 
     elif 'update_distance_refdb' in args.command:
         update_distance_refdb(config_dict, args.dist_ref_csv)
